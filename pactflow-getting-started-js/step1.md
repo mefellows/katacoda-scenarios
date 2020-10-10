@@ -1,3 +1,3 @@
 Setup our workspace: `npm i"`{{execute}}
 
-`src/consumer/api.js`{{open}}
+`package.json`{{open}}
