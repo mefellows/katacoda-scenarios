@@ -34,5 +34,10 @@
   },
   "backend": {
     "imageid": "nodejs:12"
-  }
+  },
+  "assets": { "host01": [ {"file": "*", "target": "/root"} ] },
+  "files": [
+    "src/consumer/api.js",
+    "src/consumer/api.pact.spec.js"
+  ]
 }
