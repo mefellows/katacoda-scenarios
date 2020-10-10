@@ -28,7 +28,7 @@
     "finish": {
       "text": "finish.md"
     },
-    "assets": { "client": [{"file": "*", "target": "/root", "chmod": "+x"}] },
+    "assets": { "client": [{"file": "*", "target": "/root", "chmod": "+x"}],  "host01": [ {"file": "*", "target": "/root"} ] },
     "files": [
       "src/consumer/api.js",
       "src/consumer/api.pact.spec.js"
