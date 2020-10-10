@@ -29,8 +29,7 @@
       "text": "finish.md"
     },
     "assets": {
-      "client": [{ "file": "src/consumer/*", "target": "/root/src/consumer", "chmod": "+x" }, { "file": "src/provider/*", "target": "/root/src/provider", "chmod": "+x" }, { "file": "*", "target": "/root", "chmod": "+x" }],
-      "host01": [{ "file": "src/consumer/*", "target": "/root/src/consumer" }, { "file": "src/provider/*", "target": "/root/src/provider" }, { "file": "*", "target": "/root" }]
+      "client": [{ "file": "src/consumer/*", "target": "/root/src/consumer", "chmod": "+x" }, { "file": "src/provider/*", "target": "/root/src/provider", "chmod": "+x" }, { "file": "*", "target": "/root/", "chmod": "+x" }]
     },
     "files": ["src/consumer/api.js", "src/consumer/api.pact.spec.js"]
   },
