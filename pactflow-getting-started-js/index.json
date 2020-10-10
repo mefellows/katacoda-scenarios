@@ -29,7 +29,8 @@
       "text": "finish.md"
     },
     "assets": {
-      "client": [{ "file": "*", "target": "/root/", "chmod": "+x" }]
+      "client": [{ "file": "*", "target": "/root/", "chmod": "+x" }],
+      "host01": [{ "file": "*", "target": "/root/", "chmod": "+x" }]
     },
     "files": ["package.json"]
   },
