@@ -35,10 +35,11 @@
         { "file": "package.json", "target": "/root/" }
       ]
     },
-    "files": ["package.json","api.js", "consumer.pact.spec.js "]
+    "files": ["package.json", "api.js", "consumer.pact.spec.js "]
   },
   "environment": {
-    "uilayout": "editor-terminal"
+    "hidefinish": true,
+    "uilayout": "vscode-terminal-split"
   },
   "backend": {
     "imageid": "nodejs:12"
