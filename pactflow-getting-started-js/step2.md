@@ -1,26 +1,54 @@
-To help create the index.json and scenario structure, Katacoda has developed a command line interactive (CLI).
+create the pact test:
 
-## Write your consumer test
+<pre class="file" data-filename="api.js" data-target="replace">
+import path from 'path';
+import { Pact } from '@pact-foundation/pact';
+import { API } from './api';
+import { like, regex } from '@pact-foundation/pact/dsl/matchers';
 
-Install the CLI with the command `npm run test:pact`{{execute}}.
+const mockProvider = new Pact({
+  consumer: 'pactflow-example-consumer',
+  provider: 'pactflow-example-provider',
+});
 
-The commands follow the syntax is
-`$ katacoda COMMAND`
+describe('API Pact test', () => {
+  beforeAll(() => mockProvider.setup());
+  afterEach(() => mockProvider.verify());
+  afterAll(() => mockProvider.finalize());
 
-After the install has finished, the command can be run via `katacoda --help`{{execute}}.
+  describe('retrieving a product', () => {
+    test('ID 10 exists', async () => {
+      // Arrange
+      const expectedProduct = { id: '10', type: 'CREDIT_CARD', name: '28 Degrees' }
 
-## Create scenario
-For example, to create a new scenario you would run the command `katacoda scenarios:create`{{execute}}. The CLI will prompt you a few questions in order to create your scenario:
-- **Friendly URL:** here you will type `test-scenario`. This attribute will determine the name of the folder of your scenario, and the URL to access it, so, should not contain spaces, should be lower case, etc. For example, if your username is *test-username* and your scenario was called *test-scenario* as suggested, the URL to point the scenario in the platform will be https://katacoda.com/test-username/scenarios/test-scenario/
-- **Title:** title the scenario
-- **Description:** description of the scenario, displayed on the intro screen
-- **Difficulty level:** provide users with a sense of the depth of content, displayed on the intro screen
-- **Estimated time:** provide users with an estimated time to complete, displayed on the intro screen
-- **Number of steps:** the numbers of the steps that the scenario will have. The CLI will create all the template files for all the steps that you specified
-- **Image:** it will determine which base software will be available for your scenario. For example, if you need docker, java, go, etc as a pre-requisite. For more information read [katacoda.com/docs/scenarios/environments](https://katacoda.com/docs/scenarios/environments)
-- **Layout:** it will determine the disposition of the elements of your scenario. For example, if you want to present only a terminal, or editor + terminal, etc. For more information read [katacoda.com/docs/scenarios/layouts](https://katacoda.com/docs/scenarios/layouts)
+      await mockProvider.addInteraction({
+        state: 'a product with ID 10 exists',
+        uponReceiving: 'a request to get a product',
+        withRequest: {
+          method: 'GET',
+          path: '/product/10',
+          headers: {
+            Authorization: like('Bearer 2019-01-14T11:34:18.045Z'),
+          },
+        },
+        willRespondWith: {
+          status: 200,
+          headers: {
+            'Content-Type': regex({generate: 'application/json; charset=utf-8', matcher: '^application\/json'}),
+          },
+          body: like(expectedProduct),
+        },
+      });
 
-With this information, the CLI will create a folder with the name of the ***friendly URL*** introduced and will create inside of that folder the required files for your scenario.
+      // Act
+      const api = new API(mockProvider.mockService.baseUrl);
+      const product = await api.getProduct('10');
 
-You can check your scenario created with this command:
-`ls test-scenario*`{{execute}}
+      // assert that we got the expected response
+      expect(product).toStrictEqual(expectedProduct);
+    });
+  });
+});
+</pre>
+
+`npm run test:pact:consumer`{{execute}}

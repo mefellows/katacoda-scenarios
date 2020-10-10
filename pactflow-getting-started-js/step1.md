@@ -1,12 +1,9 @@
 Setup our workspace: `npm i"`{{execute}}
 
-Open the package.json:
+Create a package.json:
 
-`package.json`{{open}}
-
-Do this:
-
-```{
+<pre class="file" data-filename="package.json" data-target="replace">
+{
   "name": "pactflow-getting-started-js",
   "version": "0.1.0",
   "dependencies": {
@@ -21,15 +18,27 @@ Do this:
     "jest": "^26.5.2"
   }
 }
-```{{copy}}
+</pre>
 
+<pre class="file" data-filename="api.js" data-target="replace">
+import axios from 'axios';
+import adapter from "axios/lib/adapters/http";
 
-<pre class="file" data-filename="test.js" data-target="replace">var http = require('http');
-var requestListener = function (req, res) {
-  res.writeHead(200);
-  res.end('Hello, World!');
+axios.defaults.adapter = adapter;
+
+export class API {
+  constructor(url) {
+    if (url === undefined || url === "") {
+      url = process.env.API_HOST;
+    }
+    this.url = url
+  }
+
+  async getProduct(id) {
+    return axios.get(`${this.url}/products/${id}`).then(r => r.data);
+  }
 }
 
-var server = http.createServer(requestListener);
-server.listen(3000, function() { console.log("Listening on port 3000")});
+export default new API();
 </pre>
+
