@@ -30,9 +30,14 @@
     },
     "assets": {
       "client": [
-        { "file": "api.js", "target": "/root/" },
-        { "file": "consumer.pact.spec.js", "target": "/root/" },
-        { "file": "package.json", "target": "/root/" }
+        { "file": "api.js", "target": "~/" },
+        { "file": "consumer.pact.spec.js", "target": "~/" },
+        { "file": "package.json", "target": "~/" }
+      ],
+      "host01": [
+        { "file": "api.js", "target": "~/" },
+        { "file": "consumer.pact.spec.js", "target": "~/" },
+        { "file": "package.json", "target": "~/" }
       ]
     },
     "files": ["package.json", "api.js", "consumer.pact.spec.js "]
