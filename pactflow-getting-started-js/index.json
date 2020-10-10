@@ -31,7 +31,7 @@
     "assets": {
       "client": [{ "file": "src/consumer/*", "target": "/root/src/consumer", "chmod": "+x" }, { "file": "src/provider/*", "target": "/root/src/provider", "chmod": "+x" }, { "file": "*", "target": "/root/", "chmod": "+x" }]
     },
-    "files": ["src/consumer/api.js", "src/consumer/api.pact.spec.js"]
+    "files": ["package.json"]
   },
   "environment": {
     "uilayout": "editor-terminal"
