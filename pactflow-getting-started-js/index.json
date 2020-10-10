@@ -35,7 +35,7 @@
   "backend": {
     "imageid": "nodejs:12"
   },
-  "assets": { "host01": [ {"file": "*", "target": "/root"} ] },
+  "assets": { "client": [{"file": "*", "target": "/root", "chmod": "+x"}] },
   "files": [
     "src/consumer/api.js",
     "src/consumer/api.pact.spec.js"
