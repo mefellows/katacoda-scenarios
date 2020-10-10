@@ -28,11 +28,11 @@
     "finish": {
       "text": "finish.md"
     },
-    "assets": { "client": [{"file": "*", "target": "/root", "chmod": "+x"}],  "host01": [ {"file": "*", "target": "/root"} ] },
-    "files": [
-      "src/consumer/api.js",
-      "src/consumer/api.pact.spec.js"
-    ]
+    "assets": {
+      "client": [{ "file": "src/consumer/*", "target": "/root", "chmod": "+x" }, { "file": "src/provider/*", "target": "/root", "chmod": "+x" }, { "file": "*", "target": "/root", "chmod": "+x" }],
+      "host01": [{ "file": "src/consumer/*", "target": "/root" }, { "file": "src/provider/*", "target": "/root" }, { "file": "*", "target": "/root" }]
+    },
+    "files": ["src/consumer/api.js", "src/consumer/api.pact.spec.js"]
   },
   "environment": {
     "uilayout": "editor-terminal"
