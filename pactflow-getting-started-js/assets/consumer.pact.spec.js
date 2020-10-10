@@ -1,11 +1,11 @@
-import path from 'path';
-import { Pact } from '@pact-foundation/pact';
-import { API } from './api';
-import { like, regex } from '@pact-foundation/pact/dsl/matchers';
+const { Pact } = require ('@pact-foundation/pact');
+const { API } = require ('./api');
+const { like, regex } = require ('@pact-foundation/pact/dsl/matchers');
 
 const mockProvider = new Pact({
   consumer: 'pactflow-example-consumer',
   provider: 'pactflow-example-provider',
+  cors: true // only needed for katacoda
 });
 
 describe('API Pact test', () => {
@@ -23,10 +23,7 @@ describe('API Pact test', () => {
         uponReceiving: 'a request to get a product',
         withRequest: {
           method: 'GET',
-          path: '/product/10',
-          headers: {
-            Authorization: like('Bearer 2019-01-14T11:34:18.045Z'),
-          },
+          path: '/products/10'
         },
         willRespondWith: {
           status: 200,

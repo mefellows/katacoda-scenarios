@@ -21,12 +21,9 @@ Create a package.json:
 </pre>
 
 <pre class="file" data-filename="api.js" data-target="replace">
-import axios from 'axios';
-import adapter from "axios/lib/adapters/http";
+const axios = require('axios');
 
-axios.defaults.adapter = adapter;
-
-export class API {
+class API {
   constructor(url) {
     if (url === undefined || url === "") {
       url = process.env.API_HOST;
@@ -38,7 +35,8 @@ export class API {
     return axios.get(`${this.url}/products/${id}`).then(r => r.data);
   }
 }
-
-export default new API();
+module.exports = {
+  API
+}
 </pre>
 
