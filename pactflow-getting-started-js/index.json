@@ -29,7 +29,7 @@
       "text": "finish.md"
     },
     "assets": {
-      "client": [{ "file": "src/consumer/*", "target": "/root/src/consumer", "chmod": "+x" }, { "file": "src/provider/*", "target": "/root/src/provider", "chmod": "+x" }, { "file": "*", "target": "/root/", "chmod": "+x" }]
+      "client": [{ "file": "*", "target": "/root/", "chmod": "+x" }]
     },
     "files": ["package.json"]
   },
