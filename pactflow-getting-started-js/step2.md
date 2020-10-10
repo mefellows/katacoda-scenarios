@@ -1,8 +1,8 @@
 To help create the index.json and scenario structure, Katacoda has developed a command line interactive (CLI).
 
-## Install CLI
+## Write your consumer test
 
-Install the CLI with the command `ls`{{execute}}.
+Install the CLI with the command `npm run test:pact`{{execute}}.
 
 The commands follow the syntax is
 `$ katacoda COMMAND`
