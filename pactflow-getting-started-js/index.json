@@ -30,9 +30,9 @@
     },
     "assets": {
       "client": [
-        { "file": "api.js", "target": "/root/api.js", "chmod": "+x" },
-        { "file": "api.pact.spec.js", "target": "/root/api.pact.spec.js", "chmod": "+x" },
-        { "file": "package.json", "target": "/root/package.json", "chmod": "+x" }
+        { "file": "api.js", "target": "/root/", "chmod": "+x" },
+        { "file": "api.pact.spec.js", "target": "/root/", "chmod": "+x" },
+        { "file": "package.json", "target": "/root/", "chmod": "+x" }
       ]
     },
     "files": ["package.json"]
