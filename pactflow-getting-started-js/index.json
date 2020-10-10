@@ -33,6 +33,6 @@
     "uilayout": "editor-terminal"
   },
   "backend": {
-    "imageid": "javascript"
-  }
+    "imageid": "nodejs:12"
+  },
 }
