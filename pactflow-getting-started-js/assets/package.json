@@ -2,10 +2,13 @@
   "name": "pactflow-getting-started-js",
   "version": "0.1.0",
   "dependencies": {
-    "axios": "^0.19.1"
+    "axios": "^0.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   },
   "scripts": {
     "test:pact:consumer": "jest --testTimeout 30000 consumer.pact.spec.js",
+    "test:pact:provider": "jest --testTimeout 30000 --forceExit provider.pact.spec.js",
     "publish": "./node_modules/.bin/pact-broker publish ./pacts --consumer-app-version 1.0.0"
   },
   "devDependencies": {
