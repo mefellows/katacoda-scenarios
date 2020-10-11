@@ -29,7 +29,7 @@
     "finish": {
       "text": "finish.md"
     },
-    "assets": { "client": [{"file": "step1-verify.sh", "target": "/root/", "chmod": "+x"}], "host01": [{"file": "step1-verify.sh", "target": "/root/", "chmod": "+x"}]  },
+    "assets": { },
     "files": []
   },
   "environment": {
