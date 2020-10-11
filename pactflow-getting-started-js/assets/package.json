@@ -5,8 +5,8 @@
     "axios": "^0.19.1"
   },
   "scripts": {
-    "test:pact:consumer": "jest --testTimeout 30000 src/consumer/pact.spec.js",
-    "test:pact:provider": "jest --testTimeout 30000 src/consumer/pact.spec.js"
+    "test:pact:consumer": "jest --testTimeout 30000 consumer.pact.spec.js",
+    "publish": "./node_modules/.bin/pact-broker publish ./pacts --consumer-app-version 1.0.0"
   },
   "devDependencies": {
     "@pact-foundation/pact": "^9.9.12",

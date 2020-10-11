@@ -1,6 +1,6 @@
 create the pact test:
 
-<pre class="file" data-filename="api.consumer.pact.js" data-target="replace">
+<pre class="file" data-filename="consumer.pact.spec.js" data-target="replace">
 const { Pact } = require ('@pact-foundation/pact');
 const { API } = require ('./api');
 const { like, regex } = require ('@pact-foundation/pact/dsl/matchers');
@@ -8,7 +8,7 @@ const { like, regex } = require ('@pact-foundation/pact/dsl/matchers');
 const mockProvider = new Pact({
   consumer: 'pactflow-example-consumer',
   provider: 'pactflow-example-provider',
-  cors: true // only needed for katacoda
+  cors: true // needed for katacoda environment
 });
 
 describe('API Pact test', () => {
