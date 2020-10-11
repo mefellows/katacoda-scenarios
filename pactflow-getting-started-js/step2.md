@@ -55,4 +55,4 @@ Run the pact test:
 
 It should have created the following file:
 
-`cat pacts/pa
+`cat pacts/katacoda-consumer-katacoda-provider.json`{{execute}}

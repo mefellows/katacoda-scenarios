@@ -5,7 +5,7 @@ Now that we published our contract, we can have the provider verify them each ti
 _NOTE_: Credentials from the previous step will be required for this step to run:
 
 1. Go to Pactflow and get your read/write API Token
-2. `export PACT_BROKER_HOST=https://YOUR_PACTFLOW_SUBDOMAIN.pactflow.io`{{execute}}
+2. `export PACT_BROKER_BASE_URL=https://YOUR_PACTFLOW_SUBDOMAIN.pactflow.io`{{execute}}
 2. `export PACT_BROKER_TOKEN=YOUR_API_TOKEN`{{execute}}
 3. `npm run publish`
 4. Go to Pactflow dashboard and check that a new contract has appeared
@@ -43,7 +43,7 @@ We need 2 new dependencies to support the provider code, and to add a new comman
   },
   "scripts": {
     "test:pact:consumer": "jest --testTimeout 30000 consumer.pact.spec.js",
-    "test:pact:provider": "jest --testTimeout 30000 provider.pact.spec.js",
+    "test:pact:provider": "jest --testTimeout 30000 --forceExit provider.pact.spec.js",
     "publish": "./node_modules/.bin/pact-broker publish ./pacts --consumer-app-version 1.0.0"
   },
   "devDependencies": {
@@ -51,8 +51,9 @@ We need 2 new dependencies to support the provider code, and to add a new comman
     "jest": "^26.5.2"
   }
 }
-
 </pre>
+
+Update our dependencies: `npm i`{{execute}}
 
 <pre class="file" data-filename="provider.pact.spec.js" data-target="replace">
 const { Verifier } = require('@pact-foundation/pact');
@@ -88,3 +89,5 @@ describe("Pact Verification", () => {
 });
 
 </pre>
+
+`npm run test:pact:provider`{{execute}}
