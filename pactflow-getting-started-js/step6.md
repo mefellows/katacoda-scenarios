@@ -25,10 +25,11 @@ describe("Pact Verification", () => {
     const opts = {
       logLevel: "INFO",
       providerBaseUrl: "http://localhost:8081",
-      providerVersion: "1.0.0-somesha",
+      providerVersion: "1.0.0-someprovidersha",
       provider: "katacoda-provider",
       consumerVersionSelectors: [{ tag: 'master', latest: true }, { tag: 'prod', latest: true } ],
       pactBrokerUrl: process.env.PACT_BROKER_BASE_URL,
+      publishVerificationResult: true,
       enablePending: true
     }
 
@@ -43,5 +44,26 @@ describe("Pact Verification", () => {
 });
 </pre>
 
+And then run it: `npm run test:provider`{{execute}}
 
-And then run it: `npm run test:pact:provider`{{execute}}
+## Deploy
+
+Now we've created our provider and confirmed it can meet the needs of its consumers, we can deploy it to production!
+
+As with the consumer, we can first check if this is safe to do:
+
+`npm run can-deploy:provider`{{execute}}
+
+Great! Because the Provider meets the needs of the consumer (and the consumer is not yet in production) it is safe to do.
+
+_REMINDER: The `can-i-deploy` command is an important part of a CI/CD workflow, adding stage gates to prevent deploying incompatible applications to environments such as production_
+
+This diagram shows an illustrative CI/CD pipeline as it relates to our progress to date:
+
+![first consumer pipeline run](./assets/provider-run.png)
+
+## Check
+
+Your dashboard should look something like this, where your provider has been tagged as having been deployed to `prod`:
+
+![pactflow-dashboard-provider-verifier](./assets/pactflow-dashboard-provider-verified-prod.png)

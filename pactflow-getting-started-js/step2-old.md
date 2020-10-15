@@ -51,7 +51,7 @@ describe('Products API test', () => {
 
 Run the pact test:
 
-`npm run test:pact:consumer`{{execute}}
+`npm run test:consumer`{{execute}}
 
 It should have created the following file:
 

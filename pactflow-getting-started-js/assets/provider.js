@@ -8,8 +8,8 @@ server.use((req, res, next) => {
   next()
 })
 
-server.get("/product/:id", (req, res) => {
-  res.json({id: 1, name: "aussie", type: "hamburger"})
+server.get("/products/:id", (req, res) => {
+  res.json({id: 1, name: "aussie", type: "hamburger", version: "1.0.0"})
 })
 
 module.exports = {

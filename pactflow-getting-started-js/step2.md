@@ -24,25 +24,35 @@ Here, a _Collaborator_ is a component whose job is to communicate with another s
 Create the following `package.json` to initialise new npm project by choosing `"copy to editor"`. This should open up a new file in the editor to the right, and populate it with the contents below.
 We'll use this approach moving forward as we progress through the workshop.
 
-We need two dependencies to run our pact tests:
+We need two dev dependencies to run our pact tests:
 
-1. Jest to use as our unit testing framework
+1. Mocha to use as our unit testing framework (we are also using Chai.js for assertions)
 2. Pact for our API assertions
+
+We have some other dependencies for our Provider and some additional scripts which can be ignored for now.
 
 <pre class="file" data-filename="package.json" data-target="replace">
 {
   "name": "pactflow-getting-started-js",
   "version": "0.1.0",
   "dependencies": {
-    "axios": "^0.19.1"
+    "axios": "^0.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   },
   "scripts": {
-    "test:pact:consumer": "jest --testTimeout 30000 consumer.pact.spec.js",
-    "publish": "./node_modules/.bin/pact-broker publish ./pacts --consumer-app-version 1.0.0"
+    "test:consumer": "mocha --exit --timeout 30000 consumer.pact.spec.js",
+    "test:provider": "mocha --exit --timeout 30000 provider.pact.spec.js",
+    "publish": "npx pact-broker publish ./pacts --consumer-app-version 1.0.0-someconsumersha --tag master",
+    "can-deploy:consumer": "npx pact-broker can-i-deploy --pacticipant katacoda-consumer --version 1.0.0-someconsumersha --to prod",
+    "can-deploy:provider": "npx pact-broker can-i-deploy --pacticipant katacoda-provider --version 1.0.0-someprovidersha --to prod",
+    "deploy:consumer": "npx pact-broker create-version-tag --pacticipant katacoda-consumer --version 1.0.0-someconsumersha --tag prod",
+    "deploy:provider": "npx pact-broker create-version-tag --pacticipant katacoda-provider --version 1.0.0-someprovidersha --tag prod"
   },
   "devDependencies": {
     "@pact-foundation/pact": "^9.9.12",
-    "jest": "^26.5.2"
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3"
   }
 }
 </pre>

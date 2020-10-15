@@ -2,13 +2,11 @@
 
 Now that we have our basic consumer code base, it's time to write our first Pact test!
 
+Pact implements a specific type of integration test called a contract test. Martin Fowler defines it as follows:
+
 > An integration contract test is a test at the boundary of an external service verifying that it meets the contract expected by a consuming service — [Martin Fowler](https://martinfowler.com/bliki/IntegrationContractTest.html)
 
-
-
-
-Create the pact
- test (click "copy to editor"):
+Create the pact test (click "copy to editor"):
 
 <pre class="file" data-filename="consumer.pact.spec.js" data-target="replace">
 // (1) Import the pact library and matching methods
@@ -60,7 +58,7 @@ describe('Products API test', () => {
 });
 </pre>
 
-Let's break down what's happening here:
+There's a lot here, so let's break it down a little.
 
 1. Import the appropriate library - this will differ depending on language
 2. Configure Pact. The name of the consumer and provider is important, as it uniquely identifies the applications in Pactflow
@@ -69,10 +67,20 @@ Let's break down what's happening here:
 5. _Act_: we configure our API client to send requests to the Pact mock service (instead of the real provider) and we execute the call to the API
 6. _Assert_: we check that our call to `getProduct(...)` worked as expected. This should just do what a regular unit test of this method does.
 
+
 ### Run the test
 
-`npm run test:pact:consumer`{{execute}}
+`npm run test:consumer`{{execute}}
 
 It should have created the following file:
 
 `cat pacts/katacoda-consumer-katacoda-provider.json`{{execute}}
+
+### Check
+
+Before moving to the next step, check the following:
+
+1. You could run the pact test with `npm run test:consumer`{{execute}}
+1. There is a contract file that has been created at `pacts/katacoda-consumer-katacoda-provider.json`
+
+_NOTE: in most setups, you wouldn't have a single file with everything in it, but for the purposes of keeping this workshop simple, we have a single test file that does it all._

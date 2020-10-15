@@ -4,7 +4,7 @@ To learn the basic concepts of Pact, we will work through an example scenario au
 
 ![Scenario](./assets/scenario.png)
 
-We will implement this system using an approach referred to as _consumer-driven contracts_, where we will first author the consumer code base before implementing the provider. You can think of this as form off TDD for APIs.
+We will implement this system using an approach referred to as _consumer-driven contracts_, where we will first author the consumer code base before implementing the provider. You can think of this as form of TDD for APIs.
 
 ### Definitions
 

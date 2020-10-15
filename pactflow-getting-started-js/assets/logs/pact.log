@@ -1,5 +1,5 @@
-I, [2020-10-15T14:11:00.370016 #42402]  INFO -- : Registered expected interaction GET /products/10
-D, [2020-10-15T14:11:00.370287 #42402] DEBUG -- : {
+I, [2020-10-15T16:11:34.098378 #48581]  INFO -- : Registered expected interaction GET /products/10
+D, [2020-10-15T16:11:34.098718 #48581] DEBUG -- : {
   "description": "a request to get a product",
   "providerState": "a product with ID 10 exists",
   "request": {
@@ -32,25 +32,21 @@ D, [2020-10-15T14:11:00.370287 #42402] DEBUG -- : {
   },
   "metadata": null
 }
-I, [2020-10-15T14:11:00.396373 #42402]  INFO -- : Received request GET /products/10
-D, [2020-10-15T14:11:00.396499 #42402] DEBUG -- : {
+I, [2020-10-15T16:11:34.106455 #48581]  INFO -- : Received request GET /products/10
+D, [2020-10-15T16:11:34.106576 #48581] DEBUG -- : {
   "path": "/products/10",
   "query": "",
   "method": "get",
   "headers": {
     "Accept": "application/json, text/plain, */*",
-    "Referer": "http://localhost/",
-    "User-Agent": "Mozilla/5.0 (darwin) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.4.0",
-    "Accept-Language": "en",
-    "Origin": "http://localhost",
-    "Host": "127.0.0.1:65451",
-    "Accept-Encoding": "gzip, deflate",
-    "Connection": "keep-alive",
+    "User-Agent": "axios/0.19.2",
+    "Host": "127.0.0.1:55994",
+    "Connection": "close",
     "Version": "HTTP/1.1"
   }
 }
-I, [2020-10-15T14:11:00.396778 #42402]  INFO -- : Found matching response for GET /products/10
-D, [2020-10-15T14:11:00.396871 #42402] DEBUG -- : {
+I, [2020-10-15T16:11:34.106843 #48581]  INFO -- : Found matching response for GET /products/10
+D, [2020-10-15T16:11:34.106979 #48581] DEBUG -- : {
   "status": 200,
   "headers": {
     "Content-Type": {
@@ -74,6 +70,6 @@ D, [2020-10-15T14:11:00.396871 #42402] DEBUG -- : {
     }
   }
 }
-I, [2020-10-15T14:11:00.414963 #42402]  INFO -- : Verifying - interactions matched
-I, [2020-10-15T14:11:00.418605 #42402]  INFO -- : Cleared interactions
-I, [2020-10-15T14:11:00.423776 #42402]  INFO -- : Writing pact for katacoda-provider to /Users/matthewfellows/development/dius/katacoda/pactflow-getting-started-js/assets/pacts/katacoda-consumer-katacoda-provider.json
+I, [2020-10-15T16:11:34.112643 #48581]  INFO -- : Verifying - interactions matched
+I, [2020-10-15T16:11:34.116926 #48581]  INFO -- : Cleared interactions
+I, [2020-10-15T16:11:34.121618 #48581]  INFO -- : Writing pact for katacoda-provider to /Users/matthewfellows/development/dius/katacoda/pactflow-getting-started-js/assets/pacts/katacoda-consumer-katacoda-provider.json

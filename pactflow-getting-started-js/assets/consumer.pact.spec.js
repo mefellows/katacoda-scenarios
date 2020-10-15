@@ -2,6 +2,8 @@ const { Pact } = require ('@pact-foundation/pact');
 const { ProductApiClient } = require ('./api');
 const { Product } = require ('./product');
 const { like, regex } = require ('@pact-foundation/pact/dsl/matchers');
+const chai = require("chai")
+const expect = chai.expect
 
 const mockProvider = new Pact({
   consumer: 'katacoda-consumer',
@@ -10,11 +12,11 @@ const mockProvider = new Pact({
 });
 
 describe('Products API test', () => {
-  beforeAll(() => mockProvider.setup());
+  before(() => mockProvider.setup());
   afterEach(() => mockProvider.verify());
-  afterAll(() => mockProvider.finalize());
+  after(() => mockProvider.finalize());
 
-  test('get product by ID', async () => {
+  it('get product by ID', async () => {
     // Arrange
     const expectedProduct = { id: 10, type: 'pizza', name: 'Margharita' }
 
@@ -39,6 +41,6 @@ describe('Products API test', () => {
     const product = await api.getProduct(10);
 
     // Assert that we got the expected response
-    expect(product).toStrictEqual(new Product(10, 'Margharita', 'pizza'));
+    expect(product).to.deep.equal(new Product(10, 'Margharita', 'pizza'));
   });
 });

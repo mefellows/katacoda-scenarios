@@ -2,7 +2,7 @@
 
 Create the following package.json (choose "copy to editor"). We need two dependencies to run our pact tests:
 
-1. Jest to use as our unit testing framework
+1. Mocha to use as our unit testing framework
 2. Pact for our API assertions
 
 <pre class="file" data-filename="package.json" data-target="replace">
@@ -13,7 +13,7 @@ Create the following package.json (choose "copy to editor"). We need two depende
     "axios": "^0.19.1"
   },
   "scripts": {
-    "test:pact:consumer": "jest --testTimeout 30000 consumer.pact.spec.js",
+    "test:consumer": "jest --testTimeout 30000 consumer.pact.spec.js",
     "publish": "./node_modules/.bin/pact-broker publish ./pacts --consumer-app-version 1.0.0"
   },
   "devDependencies": {
