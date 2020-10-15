@@ -1,66 +1,22 @@
-# Consumer
+## An example scenario: Product API
 
-Create the following package.json (choose "copy to editor"). We need two dependencies to run our pact tests:
+To learn the basic concepts of Pact, we will work through an example scenario authoring a Pact test between a consumer (Product Web) and its provider (the Product API).
 
-1. Jest to use as our unit testing framework
-2. Pact for our API assertions
+![Scenario](/assets/scenario.png)
 
-<pre class="file" data-filename="package.json" data-target="replace">
-{
-  "name": "pactflow-getting-started-js",
-  "version": "0.1.0",
-  "dependencies": {
-    "axios": "^0.19.1"
-  },
-  "scripts": {
-    "test:pact:consumer": "jest --testTimeout 30000 consumer.pact.spec.js",
-    "publish": "./node_modules/.bin/pact-broker publish ./pacts --consumer-app-version 1.0.0"
-  },
-  "devDependencies": {
-    "@pact-foundation/pact": "^9.9.12",
-    "jest": "^26.5.2"
-  }
-}
-</pre>
+We will implement this system using an approach referred to as _consumer-driven contracts_, where we will first author the consumer code base before implementing the provider. You can think of this as form off TDD for APIs.
 
-Install the dependencies for the project: `npm i`{{execute}}
+### Definitions
 
-## Consumer Code
+Let's get some terminology out of the way so we have a shared vocabulary:
 
-### Product API service
+* **Consumer**: An application that makes use of the functionality or data from another application to do its job. For applications that use HTTP, the consumer is always the application that initiates the HTTP request (eg. the web front end), regardless of the direction of data flow. For applications that use queues, the consumer is the application that reads the message from the queue.
+* **Provider**: An application (often called a service) that provides functionality or data for other applications to use, often via an API. For applications that use HTTP, the provider is the application that returns the response. For applications that use queues, the provider (also called producer) is the application that writes the messages to the queue.
 
-This code is responsible for fetching products from the API, returning a `Product`, and will be the target of our Pact test:
+A **contract** between a consumer and provider is called a *pact*. Each pact is a collection of interactions which describe how the consumer expects the provider to behave.
 
-<pre class="file" data-filename="api.js" data-target="replace">
-const axios = require('axios');
-const { Product } = require('./product');
+_The first step in writing a pact test is to describe this interaction, which we do by creating a consumer test._
 
-class API {
-  constructor(url) {
-    this.url = url
-  }
+### Further Reading
 
-  async getProduct(id) {
-    return axios.get(`${this.url}/products/${id}`).then(r => new Product(r.data.id, r.data.name, r.data.type));
-  }
-}
-module.exports = {
-  API
-}
-</pre>
-
-Our `Product` domain model:
-
-<pre class="file" data-filename="product.js" data-target="replace">
-class Product {
-  constructor(id, name, type) {
-    this.id = id
-    this.name = name
-    this.type = type
-  }
-}
-module.exports = {
-  Product
-}
-</pre>
-
+You can read more about this here: https://docs.pact.io/getting_started/how_pact_works

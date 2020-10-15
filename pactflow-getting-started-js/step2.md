@@ -1,58 +1,100 @@
-# Create the consumer pact test
+## The Consumer
 
-Create the pact test (click "copy to editor"):
+Time to create our consumer code base.
 
-<pre class="file" data-filename="consumer.pact.spec.js" data-target="replace">
-const { Pact } = require ('@pact-foundation/pact');
-const { API } = require ('./api');
-const { Product } = require ('./product');
-const { like, regex } = require ('@pact-foundation/pact/dsl/matchers');
+In our project, we're going to need:
 
-const mockProvider = new Pact({
-  consumer: 'katacoda-consumer',
-  provider: 'katacoda-provider',
-  cors: true // needed for katacoda environment
-});
+* A model (the `Product` class) to represent the data returned from the Product API
+* A client (the `ProductApiClient`) which will be responsible for making the HTTP calls to the Product API and returning an internal representation of an Product.
 
-describe('Products API test', () => {
-  beforeAll(() => mockProvider.setup());
-  afterEach(() => mockProvider.verify());
-  afterAll(() => mockProvider.finalize());
+Note that to create a Pact test, you do need to write the code that executes the HTTP requests to your service (in your client class), but you don't need to write the full stack of consumer code (eg. the UI).
 
-  test('get product by ID', async () => {
-    // Arrange
-    const expectedProduct = { id: 10, type: 'pizza', name: 'Margharita' }
+### Scope of a Consumer Pact Test
 
-    await mockProvider.addInteraction({
-      state: 'a product with ID 10 exists',
-      uponReceiving: 'a request to get a product',
-      withRequest: {
-        method: 'GET',
-        path: '/products/10'
-      },
-      willRespondWith: {
-        status: 200,
-        headers: {
-          'Content-Type': regex({generate: 'application/json; charset=utf-8', matcher: '^application\/json'}),
-        },
-        body: like(expectedProduct),
-      },
-    });
+Ideally, the Pact tests should be a unit test for your API client class, and they should just focus on ensuring that the request creation and response handling are correct. If you use pact for your UI tests, you'll end up with an explosion of redundant interactions that will make the verification process tedious. Remember that pact is for testing the contract used for communication, and not for testing particular UI behaviour or business logic.
 
-    // Act
-    const api = new API(mockProvider.mockService.baseUrl);
-    const product = await api.getProduct(10);
+Usually, your application will be broken down into a number of sub-components, depending on what type of application your consumer is \(e.g. a Web application or another API\). This is how you might visualise the coverage of a consumer Pact test:
 
-    // Assert that we got the expected response
-    expect(product).toStrictEqual(new Product(10, 'Margharita', 'pizza'));
-  });
-});
+![Scope of a consumer Pact test](/assets/consumer-test-coverage.png)
+
+Here, a _Collaborator_ is a component whose job is to communicate with another system. In our case, this is the `API` class communicating with the external `Product API` system. This is what we want our consumer test to inspect.
+
+### Create a new Project
+
+Create the following `package.json` to initialise new npm project by choosing `"copy to editor"`. This should open up a new file in the editor to the right, and populate it with the contents below.
+We'll use this approach moving forward as we progress through the workshop.
+
+We need two dependencies to run our pact tests:
+
+1. Jest to use as our unit testing framework
+2. Pact for our API assertions
+
+<pre class="file" data-filename="package.json" data-target="replace">
+{
+  "name": "pactflow-getting-started-js",
+  "version": "0.1.0",
+  "dependencies": {
+    "axios": "^0.19.1"
+  },
+  "scripts": {
+    "test:pact:consumer": "jest --testTimeout 30000 consumer.pact.spec.js",
+    "publish": "./node_modules/.bin/pact-broker publish ./pacts --consumer-app-version 1.0.0"
+  },
+  "devDependencies": {
+    "@pact-foundation/pact": "^9.9.12",
+    "jest": "^26.5.2"
+  }
+}
 </pre>
 
-Run the pact test:
+Install the dependencies for the project: `npm i`{{execute}}
 
-`npm run test:pact:consumer`{{execute}}
+(click `execute` above to run `npm i` automatically in the terminal window to the right. Again, look out for these as we progress through the workshop)
 
-It should have created the following file:
+### Create our Product Model
 
-`cat pacts/katacoda-consumer-katacoda-provider.json`{{execute}}
+Now that we have our basic project, let's create our `Product` domain model:
+
+<pre class="file" data-filename="product.js" data-target="replace">
+class Product {
+  constructor(id, name, type) {
+    this.id = id
+    this.name = name
+    this.type = type
+  }
+}
+module.exports = {
+  Product
+}
+</pre>
+
+### Create our Product API Client
+
+Lastly, here is our API client code. This code is responsible for fetching products from the API, returning a `Product`, and will be the target of our Pact test:
+
+<pre class="file" data-filename="api.js" data-target="replace">
+const axios = require('axios');
+const { Product } = require('./product');
+
+class ProductApiClient {
+  constructor(url) {
+    this.url = url
+  }
+
+  async getProduct(id) {
+    return axios.get(`${this.url}/products/${id}`).then(r => new Product(r.data.id, r.data.name, r.data.type));
+  }
+}
+module.exports = {
+  API: ProductApiClient
+}
+</pre>
+
+### Check
+
+Before moving to the next step, check the following:
+
+1. There is a file called `package.json` in your editor
+1. You have run `npm i`{{execute}} and the dependencies have been installed
+1. There is a file called `product.js` in your editor
+1. There is a file called `api.js` in your editor

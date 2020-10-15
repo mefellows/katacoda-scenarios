@@ -1,3 +1,8 @@
+# Create the consumer pact test
+
+Create the pact test (click "copy to editor"):
+
+<pre class="file" data-filename="consumer.pact.spec.js" data-target="replace">
 const { Pact } = require ('@pact-foundation/pact');
 const { ProductApiClient } = require ('./api');
 const { Product } = require ('./product');
@@ -42,3 +47,12 @@ describe('Products API test', () => {
     expect(product).toStrictEqual(new Product(10, 'Margharita', 'pizza'));
   });
 });
+</pre>
+
+Run the pact test:
+
+`npm run test:pact:consumer`{{execute}}
+
+It should have created the following file:
+
+`cat pacts/katacoda-consumer-katacoda-provider.json`{{execute}}

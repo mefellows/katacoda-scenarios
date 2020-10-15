@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { Product } = require('./product');
 
-class API {
+class ProductApiClient {
   constructor(url) {
     this.url = url
   }
@@ -11,5 +11,5 @@ class API {
   }
 }
 module.exports = {
-  API
+  API: ProductApiClient
 }
