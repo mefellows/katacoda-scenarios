@@ -1,9 +1,8 @@
-# Verify the provider
+# Testing (Verify) the provider
 
-Now that we published our contract, we can have the provider verify it each time the provider build runs, to prevent introducing breaking changes to their consumers.
+Now that we published our contract, we can have the provider verify it each time the provider build runs, to prevent introducing breaking changes to their consumers. This is referred to as "provider verification".
 
 _NOTE: Credentials from the previous step will be required for this step to run._
-
 
 #### Run the Provider tests
 
