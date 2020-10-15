@@ -48,11 +48,11 @@ And then run it: `npm run test:provider`{{execute}}
 
 Now we've created our provider and confirmed it can meet the needs of its consumers, we can deploy it to production!
 
-As with the consumer, we can first check if this is safe to do:
-
-`npm run can-deploy:provider`{{execute}}
+As with the consumer, we can first check if this is safe to do: `npm run can-deploy:provider`{{execute}}
 
 Great! Because the Provider meets the needs of the consumer (and the consumer is not yet in production) it is safe to do.
+
+Deploy the provider: `npm run deploy:provider`{{execute}}
 
 _REMINDER: The `can-i-deploy` command is an important part of a CI/CD workflow, adding stage gates to prevent deploying incompatible applications to environments such as production_
 

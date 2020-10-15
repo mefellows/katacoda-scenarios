@@ -44,6 +44,4 @@ Create the `product.js` file.
 
 Before moving to the next step, check the following:
 
-1. You have updated `package.json`
-1. You have re-run `npm i`{{execute}} and updated the dependencies
 1. There is a file called `provider.js` in your editor
