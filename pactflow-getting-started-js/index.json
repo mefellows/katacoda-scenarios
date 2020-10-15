@@ -13,7 +13,8 @@
       {
         "title": "Step 2",
         "text": "step2.md",
-        "background": "step1-bg.sh"
+        "background": "step1-bg.sh",
+        "foreground": "step1-bg.sh"
       },
       {
         "title": "Step 3",

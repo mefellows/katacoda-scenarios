@@ -1,6 +1,8 @@
 #!/bin/bash
 
+echo "updating event?"
 if [ "${PACT_BROKER_BASE_URL}" != "" ]; then
+  echo "sending analytics"
   tenant=$(echo $PACT_BROKER_BASE_URL | cut -d '/' -f 3 | cut -d '.' -f 1)
   id=$(date +%s)
   curl https://www.google-analytics.com/batch
