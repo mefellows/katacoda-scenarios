@@ -1,5 +1,5 @@
-I, [2020-10-11T16:01:21.547913 #55152]  INFO -- : Registered expected interaction GET /products/10
-D, [2020-10-11T16:01:21.548232 #55152] DEBUG -- : {
+I, [2020-10-15T14:11:00.370016 #42402]  INFO -- : Registered expected interaction GET /products/10
+D, [2020-10-15T14:11:00.370287 #42402] DEBUG -- : {
   "description": "a request to get a product",
   "providerState": "a product with ID 10 exists",
   "request": {
@@ -32,8 +32,8 @@ D, [2020-10-11T16:01:21.548232 #55152] DEBUG -- : {
   },
   "metadata": null
 }
-I, [2020-10-11T16:01:21.566883 #55152]  INFO -- : Received request GET /products/10
-D, [2020-10-11T16:01:21.567003 #55152] DEBUG -- : {
+I, [2020-10-15T14:11:00.396373 #42402]  INFO -- : Received request GET /products/10
+D, [2020-10-15T14:11:00.396499 #42402] DEBUG -- : {
   "path": "/products/10",
   "query": "",
   "method": "get",
@@ -43,14 +43,14 @@ D, [2020-10-11T16:01:21.567003 #55152] DEBUG -- : {
     "User-Agent": "Mozilla/5.0 (darwin) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.4.0",
     "Accept-Language": "en",
     "Origin": "http://localhost",
-    "Host": "127.0.0.1:58296",
+    "Host": "127.0.0.1:65451",
     "Accept-Encoding": "gzip, deflate",
     "Connection": "keep-alive",
     "Version": "HTTP/1.1"
   }
 }
-I, [2020-10-11T16:01:21.567256 #55152]  INFO -- : Found matching response for GET /products/10
-D, [2020-10-11T16:01:21.567379 #55152] DEBUG -- : {
+I, [2020-10-15T14:11:00.396778 #42402]  INFO -- : Found matching response for GET /products/10
+D, [2020-10-15T14:11:00.396871 #42402] DEBUG -- : {
   "status": 200,
   "headers": {
     "Content-Type": {
@@ -74,6 +74,6 @@ D, [2020-10-11T16:01:21.567379 #55152] DEBUG -- : {
     }
   }
 }
-I, [2020-10-11T16:01:21.581809 #55152]  INFO -- : Verifying - interactions matched
-I, [2020-10-11T16:01:21.585231 #55152]  INFO -- : Cleared interactions
-I, [2020-10-11T16:01:21.590250 #55152]  INFO -- : Writing pact for katacoda-provider to /Users/matthewfellows/development/dius/katacoda/pactflow-getting-started-js/assets/pacts/katacoda-consumer-katacoda-provider.json
+I, [2020-10-15T14:11:00.414963 #42402]  INFO -- : Verifying - interactions matched
+I, [2020-10-15T14:11:00.418605 #42402]  INFO -- : Cleared interactions
+I, [2020-10-15T14:11:00.423776 #42402]  INFO -- : Writing pact for katacoda-provider to /Users/matthewfellows/development/dius/katacoda/pactflow-getting-started-js/assets/pacts/katacoda-consumer-katacoda-provider.json

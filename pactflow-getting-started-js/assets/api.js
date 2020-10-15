@@ -11,5 +11,5 @@ class ProductApiClient {
   }
 }
 module.exports = {
-  API: ProductApiClient
+  ProductApiClient
 }
