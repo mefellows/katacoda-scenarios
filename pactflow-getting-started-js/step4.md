@@ -6,11 +6,7 @@ Now that we have created our contract, we need to share the contract to our prov
 2. `export PACT_BROKER_BASE_URL=https://YOUR_PACTFLOW_SUBDOMAIN.pactflow.io`
 2. `export PACT_BROKER_TOKEN=YOUR_API_TOKEN`
 3. `npm run publish`{{execute}}
-4. Go to Pactflow dashboard and check that a new contract has appeared
-
-_NOTE: can we automatically verify this step for the user during the course?_
-_NOTE: could use test.pactflow.io?_
-
+4. Go to your Pactflow dashboard and check that a new contract has appeared
 
 ## Don't have a Pactflow account?
 
