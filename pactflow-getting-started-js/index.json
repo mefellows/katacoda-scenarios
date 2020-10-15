@@ -13,38 +13,31 @@
       },
       {
         "title": "Step 2",
-        "text": "step2.md",
-        "background": "step2.sh"
+        "text": "step2.md"
       },
       {
         "title": "Step 3",
-        "text": "step3.md",
-        "background": "step3.sh"
+        "text": "step3.md"
       },
       {
         "title": "Step 4",
-        "text": "step4.md",
-        "background": "step4.sh"
+        "text": "step4.md"
       },
       {
         "title": "Step 5",
-        "text": "step5.md",
-        "background": "step5.sh"
+        "text": "step5.md"
       },
       {
         "title": "Step 6",
-        "text": "step6.md",
-        "background": "step6.sh"
+        "text": "step6.md"
       },
       {
         "title": "Step 7",
-        "text": "step7.md",
-        "background": "step7.sh"
+        "text": "step7.md"
       },
       {
         "title": "Step 8",
-        "text": "step8.md",
-        "background": "step8.sh"
+        "text": "step8.md"
       }
     ],
     "intro": {
