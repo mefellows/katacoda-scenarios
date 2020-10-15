@@ -2,7 +2,7 @@
 
 To learn the basic concepts of Pact, we will work through an example scenario authoring a Pact test between a consumer (Product Web) and its provider (the Product API).
 
-![Scenario](/assets/scenario.png)
+![Scenario](./assets/scenario.png)
 
 We will implement this system using an approach referred to as _consumer-driven contracts_, where we will first author the consumer code base before implementing the provider. You can think of this as form off TDD for APIs.
 

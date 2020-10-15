@@ -15,7 +15,7 @@ Ideally, the Pact tests should be a unit test for your API client class, and the
 
 Usually, your application will be broken down into a number of sub-components, depending on what type of application your consumer is \(e.g. a Web application or another API\). This is how you might visualise the coverage of a consumer Pact test:
 
-![Scope of a consumer Pact test](/assets/consumer-test-coverage.png)
+![Scope of a consumer Pact test](./consumer-test-coverage.png)
 
 Here, a _Collaborator_ is a component whose job is to communicate with another system. In our case, this is the `API` class communicating with the external `Product API` system. This is what we want our consumer test to inspect.
 
@@ -86,7 +86,7 @@ class ProductApiClient {
   }
 }
 module.exports = {
-  API: ProductApiClient
+  ProductApiClient
 }
 </pre>
 
