@@ -32,6 +32,10 @@
       {
         "title": "Step 7",
         "text": "step7.md"
+      },
+      {
+        "title": "Step 8",
+        "text": "step8.md"
       }
     ],
     "intro": {
@@ -44,6 +48,7 @@
     "files": []
   },
   "environment": {
+    "hidefinish": true,
     "uilayout": "vscode-terminal-split"
   },
   "backend": {

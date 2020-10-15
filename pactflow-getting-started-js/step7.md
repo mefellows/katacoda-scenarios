@@ -20,6 +20,12 @@ Now we may release our consumer application to production: `npm run deploy:consu
 
 ![second consumer pipeline run](./assets/consumer-run-2.png)
 
+## Further reading
+
+You might be wanting to ask questions about the workflow at this stage. To keep this workshop short and sharp, we are
+
+We have an entire workshop dedicated to helping you create streamlined CI/CD workflows. You can find it here: https://docs.pactflow.io/docs/workshops/ci-cd/
+
 ## Check
 
 Your dashboard should look something like this, where both your consumer and provider are marked as having been deployed to `prod`:
