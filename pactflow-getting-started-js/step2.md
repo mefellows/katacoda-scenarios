@@ -49,7 +49,7 @@ We need two dependencies to run our pact tests:
 
 Install the dependencies for the project: `npm i`{{execute}}
 
-(click `execute` above to run `npm i` automatically in the terminal window to the right. Again, look out for these as we progress through the workshop)
+(click on the highlighted command above to run `npm i` automatically in the terminal window to the right. Again, look out for these as we progress through the workshop)
 
 ### Create our Product Model
 
