@@ -1,3 +1,4 @@
+// (1) Import the pact library and matching methods
 const { Pact } = require ('@pact-foundation/pact');
 const { ProductApiClient } = require ('./api');
 const { Product } = require ('./product');
@@ -5,6 +6,7 @@ const { like, regex } = require ('@pact-foundation/pact/dsl/matchers');
 const chai = require("chai")
 const expect = chai.expect
 
+// (2) Configure our Pact library
 const mockProvider = new Pact({
   consumer: 'katacoda-consumer',
   provider: 'katacoda-provider',
@@ -12,12 +14,13 @@ const mockProvider = new Pact({
 });
 
 describe('Products API test', () => {
+  // (3) Setup Pact lifecycle hooks
   before(() => mockProvider.setup());
   afterEach(() => mockProvider.verify());
   after(() => mockProvider.finalize());
 
   it('get product by ID', async () => {
-    // Arrange
+    // (4) Arrange
     const expectedProduct = { id: 10, type: 'pizza', name: 'Margharita' }
 
     await mockProvider.addInteraction({
@@ -36,11 +39,11 @@ describe('Products API test', () => {
       },
     });
 
-    // Act
+    // (5) Act
     const api = new ProductApiClient(mockProvider.mockService.baseUrl);
     const product = await api.getProduct(10);
 
-    // Assert that we got the expected response
+    // (6) Assert that we got the expected response
     expect(product).to.deep.equal(new Product(10, 'Margharita', 'pizza'));
   });
 });

@@ -2,9 +2,7 @@ const { Verifier } = require('@pact-foundation/pact');
 const { server} = require('./provider');
 
 describe("Pact Verification", () => {
-  before((done) => {
-    server.listen(8081, done)
-  })
+  before((done) => server.listen(8081, done))
 
   it("validates the expectations of ProductService",  () => {
     const opts = {

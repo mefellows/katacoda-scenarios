@@ -19,9 +19,9 @@ const { Verifier } = require('@pact-foundation/pact');
 const { server} = require('./provider');
 
 describe("Pact Verification", () => {
-  beforeAll((done) => server.listen(8081, done))
+  before((done) => server.listen(8081, done))
 
-  it("validates the expectations of ProductService", () => {
+  it("validates the expectations of ProductService",  () => {
     const opts = {
       logLevel: "INFO",
       providerBaseUrl: "http://localhost:8081",
@@ -34,13 +34,11 @@ describe("Pact Verification", () => {
     }
 
     return new Verifier(opts).verifyProvider()
-      .then(output => {
+    .then(output => {
         console.log("Pact Verification Complete!")
         console.log(output)
       })
   })
-
-  afterAll(() => server.close())
 });
 </pre>
 

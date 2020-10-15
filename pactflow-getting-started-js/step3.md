@@ -11,9 +11,11 @@ Create the pact test (click "copy to editor"):
 <pre class="file" data-filename="consumer.pact.spec.js" data-target="replace">
 // (1) Import the pact library and matching methods
 const { Pact } = require ('@pact-foundation/pact');
-const { like, regex } = require ('@pact-foundation/pact/dsl/matchers');
 const { ProductApiClient } = require ('./api');
 const { Product } = require ('./product');
+const { like, regex } = require ('@pact-foundation/pact/dsl/matchers');
+const chai = require("chai")
+const expect = chai.expect
 
 // (2) Configure our Pact library
 const mockProvider = new Pact({
@@ -24,11 +26,11 @@ const mockProvider = new Pact({
 
 describe('Products API test', () => {
   // (3) Setup Pact lifecycle hooks
-  beforeAll(() => mockProvider.setup());
+  before(() => mockProvider.setup());
   afterEach(() => mockProvider.verify());
-  afterAll(() => mockProvider.finalize());
+  after(() => mockProvider.finalize());
 
-  test('get product by ID', async () => {
+  it('get product by ID', async () => {
     // (4) Arrange
     const expectedProduct = { id: 10, type: 'pizza', name: 'Margharita' }
 
@@ -52,8 +54,8 @@ describe('Products API test', () => {
     const api = new ProductApiClient(mockProvider.mockService.baseUrl);
     const product = await api.getProduct(10);
 
-    // (6) Assert that our API client was able to create a valid domain object
-    expect(product).toStrictEqual(new Product(10, 'Margharita', 'pizza'));
+    // (6) Assert that we got the expected response
+    expect(product).to.deep.equal(new Product(10, 'Margharita', 'pizza'));
   });
 });
 </pre>
